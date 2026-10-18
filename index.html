@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>កម្មវិធីបង្កើតក្របសៀវភៅសិស្ស - Khmer Student Book Cover Studio</title>
+  <meta name="description"
+    content="កម្មវិធីបង្កើត និងរចនាក្របសៀវភៅសិស្សបែបខ្មែរ មានក្បាច់ភ្ញីទេសរាជវាំង អង្គរវត្ត ផ្ការំដួល ក្រឡាហ្គារ៉ូ អក្សរកោង និងបោះពុម្ព A4 យ៉ាងស្រស់ស្អាត">
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Designer Splash Screen -->
+  <div id="splash-screen" class="splash-screen-overlay">
+    <div class="splash-ambient-orb orb-1"></div>
+    <div class="splash-ambient-orb orb-2"></div>
+
+    <div class="splash-card">
+      <div class="splash-top-badge">
+        <span class="splash-badge-dot"></span>
+        <span>KHMER PRO EDITION • V2.0</span>
+      </div>
+
+      <div class="splash-hero-icon-box">
+        <div class="splash-icon-glow"></div>
+        <div class="splash-icon-inner">📖</div>
+      </div>
+
+      <h1 class="splash-app-title">កម្មវិធីរចនាក្របសៀវភៅសិស្ស</h1>
+      <p class="splash-app-sub">Khmer Primary Student Notebook Cover Studio • ក្បាច់ខ្មែរ & ស្តង់ដារអប់រំ</p>
+
+      <div class="splash-designer-card">
+        <div class="splash-avatar-box">🇰🇭</div>
+        <div class="splash-designer-info">
+          <div class="splash-created-by-label">រចនាបថ និងវប្បធម៌ខ្មែរ (Authentic Khmer Design)</div>
+          <h2 class="splash-creator-name">ស្ទូឌីយោក្បាច់ខ្មែរ & សៀវភៅសិស្ស</h2>
+          <div class="splash-skill-tags">
+            <span class="skill-tag">ក្បាច់ភ្ញីទេសរាជវាំង</span>
+            <span class="skill-tag">ប្រាសាទអង្គរវត្ត</span>
+            <span class="skill-tag">ផ្ការំដួលជាតិ</span>
+            <span class="skill-tag">ក្រឡាហ្គារ៉ូសៀវភៅ</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="splash-footer-action">
+        <div class="splash-timer-row">
+          <span>កំពុងរៀបចំស្ទូឌីយោ...</span>
+          <div class="splash-countdown-text">ចូលស្វ័យប្រវត្តិក្នង <strong id="splash-timer-num">3</strong> វិនាទី</div>
+        </div>
+        <div class="splash-progress-track">
+          <div class="splash-progress-fill"></div>
+        </div>
+        <button id="btn-splash-skip" class="btn-splash-enter" type="button">
+          <span>ចូលកម្មវិធីភ្លាមៗ (Enter Studio)</span>
+          <span>➔</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="logo-area">
+      <div class="logo-icon">📖</div>
+      <div>
+        <h1 class="logo-title">កម្មវិធីរចនាក្របសៀវភៅសិស្ស</h1>
+        <div class="logo-sub">Khmer Student Notebook Cover Studio • បែបខ្មែរ</div>
+      </div>
+    </div>
+
+    <!-- Auto-Save Status Badge -->
+    <div class="autosave-header-box" id="autosave-header-box" style="display: flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 20px; padding: 5px 14px; font-size: 11.5px; color: #34d399;">
+      <span class="autosave-dot" id="autosave-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981; transition: all 0.3s;"></span>
+      <span id="autosave-status-text" style="font-weight: 600;">Auto-Save: បានរក្សាទុក</span>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn btn-outline btn-sm" id="btn-header-open-font-picker" title="ជ្រើសរើស Font ពីកុំព្យូទ័រផ្ទាល់ និង Font ខ្មែរស្អាតៗ" style="border-color: #ffd54f; color: #ffd54f; font-weight: 700;">
+        <span>🔤</span> Font ក្នុង PC
+      </button>
+      <button class="btn btn-outline btn-sm" id="btn-open-database-modal" title="មូលដ្ឋានទិន្នន័យរក្សាទុក Template (បើកលើកុំព្យូទ័រណាក៏ចេញដូចគ្នា)" style="border-color: #38bdf8; color: #38bdf8;">
+        <span>💾</span> Database Template
+      </button>
+      <button class="btn btn-outline btn-sm" id="btn-open-sheets-modal" title="សមកាលកម្មទិន្នន័យ Google Sheets និងនាំចូលបញ្ជីសិស្ស">
+        <span style="color: #34d399;">📊</span> Google Sheets
+      </button>
+      <button class="btn btn-outline btn-sm" id="btn-reset" title="កំណត់ឡើងវិញដូចគំរូដើម">
+        <span>🔄</span> កំណត់ឡើងវិញ
+      </button>
+      <button class="btn btn-accent btn-sm" id="btn-batch-modal" title="បង្កើតគ្រប់មុខវិជ្ជាក្នុងពេលតែមួយ">
+        <span>📦</span> បង្កើតគ្រប់មុខវិជ្ជា
+      </button>
+      <button class="btn btn-outline btn-sm" id="btn-print-a4" title="បោះពុម្ពទំហំ A4">
+        <span style="color: #ffd54f;">🖨️</span> បោះពុម្ព A4
+      </button>
+      <button class="btn btn-outline btn-sm" id="btn-download-jpg" title="ទាញយកជារូបភាព JPG">
+        <span>🖼️</span> JPG
+      </button>
+      <button class="btn btn-primary btn-sm" id="btn-download-png" title="ទាញយកជារូបភាព PNG កម្រិតខ្ពស់ (HD)">
+        <span>📥</span> ទាញយក PNG (HD)
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="main-workspace">
+    <!-- Left Sidebar Controls -->
+    <aside class="sidebar-panel">
+      <!-- Tabs Navigation -->
+      <nav class="tabs-nav">
+        <button class="tab-btn active" data-tab="tab-subjects">
+          <span class="tab-icon">📚</span>
+          <span>មុខវិជ្ជា</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-info">
+          <span class="tab-icon">✍️</span>
+          <span>ព័ត៌មានក្រប</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-typography">
+          <span class="tab-icon">✨</span>
+          <span>អក្សរកោង & Font</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-frames">
+          <span class="tab-icon">🖼️</span>
+          <span>ម៉ូតស៊ុមខ្មែរ</span>
+        </button>
+      </nav>
+
+      <!-- Tabs Content Area -->
+      <div class="tabs-content">
+
+        <!-- Tab 1: Subject Presets & Custom Subjects -->
+        <div class="tab-pane active" id="tab-subjects">
+          <div class="control-section">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div class="section-title" style="margin-bottom: 0;">
+                <span>🎯</span> ជ្រើសរើសមុខវិជ្ជា (<span id="subject-count-badge" style="color: #ffd54f;">12</span>)
+              </div>
+              <button class="btn btn-sm btn-primary" id="btn-open-add-subject" type="button" title="បន្ថែមមុខវិជ្ជាថ្មី">
+                <span>➕</span> បន្ថែមមុខវិជ្ជា
+              </button>
+            </div>
+            <p style="font-size: 11.5px; color: var(--text-muted); margin-bottom: 12px;">
+              ចុចលើមុខវិជ្ជាណាមួយដើម្បីប្តូរពណ៌ ម៉ូត និងចំណងជើងសៀវភៅដោយស្វ័យប្រវត្តិ៖
+            </p>
+
+            <div class="subject-grid" id="subject-list">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Book Information Inputs -->
+        <div class="tab-pane" id="tab-info">
+          <!-- Auto-Save System Settings Card -->
+          <div class="control-section" style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: 14px; margin-bottom: 16px;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 20px;">⚡</span>
+                <div>
+                  <div style="font-size: 13px; font-weight: 700; color: #34d399;">ប្រព័ន្ធរក្សាទុកស្វ័យប្រវត្តិ (Auto-Save System)</div>
+                  <div style="font-size: 11px; color: var(--text-muted);">រក្សាទុកការកែប្រែលើក្របសៀវភៅភ្លាមៗកុំឱ្យបាត់</div>
+                </div>
+              </div>
+              <label class="form-check" style="margin-bottom: 0; cursor: pointer;">
+                <input type="checkbox" id="toggle-autosave-setting" checked style="accent-color: #10b981; width: 16px; height: 16px; cursor: pointer;" />
+                <span style="font-size: 12px; font-weight: 700; color: #34d399; margin-left: 4px;">បើក</span>
+              </label>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(255,255,255,0.08); font-size: 11px; color: var(--text-muted); flex-wrap: wrap; gap: 6px;">
+              <span id="autosave-last-time">បានរក្សាទុកចុងក្រោយ ៖ ថ្មីៗនេះ</span>
+              <div style="display: flex; gap: 6px;">
+                <button type="button" class="btn btn-sm btn-outline" id="btn-force-save-now" style="font-size: 11px; padding: 4px 10px; color: #34d399; border-color: rgba(16, 185, 129, 0.4);">
+                  <span>💾</span> Save ឥឡូវនេះ
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="btn-clear-autosave" style="font-size: 11px; padding: 4px 10px; color: #ef4444; border-color: rgba(239, 68, 68, 0.4);">
+                  <span>🗑️</span> សម្អាត
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Khmer National Header Toggle -->
+          <div class="control-section">
+            <div class="section-title">
+              <span>🇰🇭</span> ក្បាលក្រដាសជាតិ (National Header)
+            </div>
+            <div class="form-group">
+              <label class="form-check">
+                <input type="checkbox" id="toggle-national-header" checked />
+                <span style="font-weight: 700; color: #ffd54f;">បង្ហាញ "ព្រះរាជាណាចក្រកម្ពុជា"</span>
+              </label>
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label class="form-label" for="input-national-title">ចំណងជើងជួរទី ១</label>
+              <input type="text" id="input-national-title" class="form-control" value="ព្រះរាជាណាចក្រកម្ពុជា" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="input-national-motto">ពាក្យស្លោកជួរទី ២</label>
+              <input type="text" id="input-national-motto" class="form-control" value="ជាតិ  សាសនា  ព្រះមហាក្សត្រ" />
+            </div>
+          </div>
+
+          <!-- Main Info -->
+          <div class="control-section">
+            <div class="section-title">
+              <span>📝</span> បំពេញព័ត៌មានលើក្របសៀវភៅ
+            </div>
+
+            <!-- Quick Font Select for the Cover -->
+            <div class="form-group" style="background: rgba(212,175,55,0.08); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); margin-bottom: 16px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                <label class="form-label" for="tab2-font-select" style="font-size: 12.5px; color: #ffd54f; font-weight: 700; margin-bottom: 0;">
+                  <span>🔤 ពុម្ពអក្សរ (Font Dropdown Select)</span>
+                </label>
+                <span style="font-size: 11px; color: var(--text-muted);">ជ្រើសរើសតាម Select</span>
+              </div>
+              <select id="tab2-font-select" class="form-control" style="font-size: 13px; font-weight: 600; background: #0f172a; border-color: rgba(212,175,55,0.5); color: #fff;">
+                <!-- Populated via app.js -->
+              </select>
+              <div style="display: flex; gap: 8px; margin-top: 8px;">
+                <button type="button" class="btn btn-sm btn-primary" id="btn-tab2-open-font-picker" style="flex: 1.2; font-size: 11px; padding: 6px 8px; justify-content: center; background: linear-gradient(135deg, #d4af37, #b45309); border: none; font-weight: 700;">
+                  <span>🎨</span> បើកផ្ទាំងរើស Font ពី PC
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="btn-tab2-apply-all-fonts" style="flex: 1; font-size: 11px; padding: 6px 8px; justify-content: center; border-color: rgba(212,175,55,0.4); color: #ffd54f;">
+                  <span>✨</span> ដាក់លើទាំងអស់
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-school-name">ឈ្មោះសាលារៀន (School Name)</label>
+              <input type="text" id="input-school-name" class="form-control"
+                placeholder="ឧទាហរណ៍៖ សាលាបឋមសិក្សាកោះថ្កូវ" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-grade">ថ្នាក់ទី / បន្ទប់ (Grade / Class)</label>
+              <input type="text" id="input-grade" class="form-control" placeholder="ឧទាហរណ៍៖ ថ្នាក់ទី ៖ ៤(ក)" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-subject">ចំណងជើងសៀវភៅ (Subject Title)</label>
+              <input type="text" id="input-subject" class="form-control" placeholder="ឧទាហរណ៍៖ សៀវភៅ ៖ ភាសាខ្មែរ" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-student-name">ឈ្មោះសិស្ស (Student Name)</label>
+              <input type="text" id="input-student-name" class="form-control"
+                placeholder="ឧទាហរណ៍៖ ឈ្មោះ ៖ រស់ សុវណ្ណរចនា" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-student-extra">ភេទ និង អត្តលេខ (Gender & ID)</label>
+              <input type="text" id="input-student-extra" class="form-control"
+                placeholder="ឧទាហរណ៍៖ ភេទ ៖ ស្រី   |   អត្តលេខ ៖ ០២៤" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-academic-year">ឆ្នាំសិក្សា (Academic Year)</label>
+              <input type="text" id="input-academic-year" class="form-control"
+                placeholder="ឧទាហរណ៍៖ ឆ្នាំសិក្សា ២០២៥ ~ ២០២៦" />
+            </div>
+
+            <div class="form-group"
+              style="margin-top: 16px; border-top: 1px dashed var(--border-color); padding-top: 14px;">
+              <label class="form-check">
+                <input type="checkbox" id="toggle-teacher" checked />
+                <span>បង្ហាញឈ្មោះគ្រូបង្រៀន (Teacher Name)</span>
+              </label>
+              <input type="text" id="input-teacher-name" class="form-control" style="margin-top: 8px;"
+                placeholder="គ្រូបន្ទុកថ្នាក់ ៖ អ្នកគ្រូ គឹម សុផល" />
+            </div>
+
+            <div class="form-group"
+              style="margin-top: 14px; border-top: 1px dashed var(--border-color); padding-top: 14px;">
+              <label class="form-check">
+                <input type="checkbox" id="toggle-photo" />
+                <span>ដាក់រូបថតសិស្ស ឬ Logo សាលា (Student Photo / Logo)</span>
+              </label>
+              <input type="file" id="photo-upload" accept="image/*" class="form-control" style="margin-top: 8px;" />
+            </div>
+
+            <div class="form-group"
+              style="margin-top: 14px; border-top: 1px dashed var(--border-color); padding-top: 14px;">
+              <label class="form-check">
+                <input type="checkbox" id="toggle-corner-flowers" />
+                <span>បង្ហាញកម្រងផ្កាតុបតែងជ្រុង (Corner Flowers)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Typography & Curved Text -->
+        <div class="tab-pane" id="tab-typography">
+          <div class="control-section">
+            <div class="section-title">
+              <span>🎯</span> ជ្រើសរើសស្រទាប់អក្សរ (Active Layer)
+            </div>
+            <div class="form-group">
+              <select id="layer-select" class="form-control">
+                <!-- Populated via JS -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Khmer Fonts & Computer Fonts -->
+          <div class="control-section">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div class="section-title" style="margin-bottom: 0;">
+                <span>🔤</span> ពុម្ពអក្សរខ្មែរ & កុំព្យូទ័រ (Fonts)
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 10px;">
+              <button type="button" class="btn btn-sm btn-primary" id="btn-tab3-open-font-picker" style="width: 100%; justify-content: center; font-size: 13px; font-weight: 700; padding: 9px 14px; background: linear-gradient(135deg, #d4af37, #b45309); border: none; box-shadow: 0 4px 12px rgba(212,175,55,0.25);">
+                <span>🎨</span> បើកផ្ទាំងរើស Font ពី PC ផ្ទាល់ (Visual Studio)
+              </button>
+            </div>
+
+            <div class="form-group">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                <label class="form-label" for="font-family-select" style="margin-bottom: 0;">ជ្រើសរើស Font (Dropdown Select)</label>
+                <span style="font-size: 11px; color: #ffd54f; font-weight: 600;">រើសតាម Select</span>
+              </div>
+              <select id="font-family-select" class="form-control" style="font-size: 13.5px; font-weight: 600; background: #162032; border: 1px solid var(--accent-gold); color: #fff;">
+                <!-- Populated via app.js -->
+              </select>
+            </div>
+
+            <!-- Apply Font Buttons -->
+            <div style="margin-bottom: 12px;">
+              <button type="button" class="btn btn-sm btn-outline" id="btn-apply-font-all" style="width: 100%; justify-content: center; font-size: 11.5px; border-color: rgba(212,175,55,0.4); color: #ffd54f;">
+                <span>✨</span> អនុវត្ត Font នេះលើអក្សរទាំងអស់ (Apply to All Text)
+              </button>
+            </div>
+
+            <!-- Two Quick Actions: Scan PC Fonts & Upload File -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
+              <button type="button" class="btn btn-sm btn-outline" id="btn-scan-pc-fonts" title="ស្កេនទាញយក Font ទាំងអស់ដែលបានដំឡើងលើ Windows/កុំព្យូទ័រ" style="border-color: #38bdf8; color: #38bdf8; justify-content: center;">
+                <span>🔍</span> ស្កេន Font ក្នុង PC
+              </button>
+              <button type="button" class="btn btn-sm btn-outline" id="btn-upload-local-font" title="ជ្រើសរើសឯកសារ Font (.ttf, .otf, .woff)" style="border-color: var(--accent-gold); color: #ffd54f; justify-content: center;">
+                <span>📁</span> ជ្រើសរើស File Font
+              </button>
+              <input type="file" id="input-font-upload" accept=".ttf,.otf,.woff,.woff2" multiple style="display: none;" />
+            </div>
+
+            <!-- Type direct font name from PC -->
+            <div class="form-group" style="margin-bottom: 12px; background: rgba(255,255,255,0.02); padding: 8px; border-radius: var(--radius-sm); border: 1px dashed var(--border-color);">
+              <label class="form-label" style="font-size: 11px; margin-bottom: 4px;">✍️ ឬ វាយឈ្មោះ Font ដែលមានក្នុងកុំព្យូទ័រផ្ទាល់ ៖</label>
+              <div style="display: flex; gap: 6px;">
+                <input type="text" id="input-custom-font-name" class="form-control" style="font-size: 12px; padding: 6px 10px;" placeholder="ឧ. Khmer OS Muol Light" />
+                <button type="button" class="btn btn-sm btn-primary" id="btn-apply-custom-font-name" style="padding: 6px 12px; font-size: 11.5px; white-space: nowrap;">
+                  អនុវត្ត
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">ទំហំអក្សរ (Font Size): <span id="font-size-val"
+                  class="slider-val">34px</span></label>
+              <div class="slider-container">
+                <input type="range" id="slider-font-size" min="16" max="64" value="34" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Curved Text Controls -->
+          <div class="control-section">
+            <div class="section-title">
+              <span>🌈</span> អក្សរកោង (Curved / Arched Text)
+            </div>
+            <div class="form-group">
+              <label class="form-check">
+                <input type="checkbox" id="toggle-curved" checked />
+                <span style="font-weight: 600; color: #ffd54f;">បើកដំណើរការអក្សរកោង (Curved Arc)</span>
+              </label>
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label class="form-label">កម្រិតកោង (Curvature): <span id="curvature-val"
+                  class="slider-val">36</span></label>
+              <div class="slider-container">
+                <input type="range" id="slider-curvature" min="-80" max="80" value="36" />
+              </div>
+              <div class="curve-presets-row">
+                <button type="button" class="curve-preset-btn" data-curve="36">拱 កោងឡើងលើ</button>
+                <button type="button" class="curve-preset-btn" data-curve="0">─ ត្រង់ស្មើ</button>
+                <button type="button" class="curve-preset-btn" data-curve="-36">︶ កោងចុះក្រោម</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3D & Embossed Text Controls (អក្សរផុស & 3D) -->
+          <div class="control-section" style="border: 1.5px solid rgba(212, 175, 55, 0.4); background: rgba(30, 41, 59, 0.35); border-radius: var(--radius-md); padding: 14px; margin-bottom: 18px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div class="section-title" style="margin-bottom: 0;">
+                <span>💎</span> អក្សរផុស & អក្សរ 3D (3D & Emboss)
+              </div>
+              <span style="font-size: 10px; padding: 2px 8px; border-radius: 10px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #fff; font-weight: 700;">PRO 3D</span>
+            </div>
+            
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">
+              បង្កើតជម្រៅបែបអក្សរផុស (Embossed) និងអក្សរ 3D ឆ្លាក់ពិតៗ បង្កើនភាពទាក់ទាញលើក្រប ៖
+            </p>
+
+            <div class="form-group" style="margin-bottom: 10px;">
+              <label class="form-check" style="cursor: pointer;">
+                <input type="checkbox" id="toggle-3d-text" style="accent-color: var(--accent-gold); width: 17px; height: 17px; cursor: pointer;" />
+                <span style="font-weight: 700; color: #ffd54f; font-size: 13px; margin-left: 6px;">បើកដំណើរការអក្សរផុស / 3D (Enable 3D & Emboss)</span>
+              </label>
+            </div>
+
+            <div id="controls-3d-panel" style="display: none; margin-top: 10px;">
+              <!-- 6 Fast 3D Presets -->
+              <div class="preset-3d-grid">
+                <button type="button" class="preset-3d-btn" data-preset="emboss-gold">
+                  <span class="preset-3d-sample" style="color: #ffd54f; text-shadow: -1px -1px 0 #fff, 2px 2px 0 #b45309;">អក្សរ</span>
+                  <span class="preset-3d-label">💎 ផុសមាស</span>
+                </button>
+                <button type="button" class="preset-3d-btn" data-preset="emboss-raised">
+                  <span class="preset-3d-sample" style="color: #0d47a1; text-shadow: -1px -1px 0 #fff, 2px 2px 3px rgba(0,0,0,0.5);">អក្សរ</span>
+                  <span class="preset-3d-label">👑 ផុសរាជវាំង</span>
+                </button>
+                <button type="button" class="preset-3d-btn" data-preset="extrude-3d">
+                  <span class="preset-3d-sample" style="color: #ffffff; text-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000;">អក្សរ</span>
+                  <span class="preset-3d-label">🌟 3D Extrude</span>
+                </button>
+                <button type="button" class="preset-3d-btn" data-preset="extrude-gold">
+                  <span class="preset-3d-sample" style="color: #fff8dc; text-shadow: 1px 1px 0 #b8860b, 2px 2px 0 #996515, 3px 3px 0 #78350f;">អក្សរ</span>
+                  <span class="preset-3d-label">🏆 3D មាសបុរាណ</span>
+                </button>
+                <button type="button" class="preset-3d-btn" data-preset="retro-pop">
+                  <span class="preset-3d-sample" style="color: #ffeb3b; text-shadow: 2px 2px 0 #c2185b, 4px 4px 0 #0d47a1;">អក្សរ</span>
+                  <span class="preset-3d-label">🎨 3D Retro Pop</span>
+                </button>
+                <button type="button" class="preset-3d-btn" data-preset="deep-shadow">
+                  <span class="preset-3d-sample" style="color: #10b981; text-shadow: 0 4px 0 #064e3b, 0 6px 6px rgba(0,0,0,0.4);">អក្សរ</span>
+                  <span class="preset-3d-label">⬛ ស្រមោលជ្រៅ</span>
+                </button>
+              </div>
+
+              <!-- Depth Slider -->
+              <div class="form-group" style="margin-bottom: 12px;">
+                <label class="form-label" style="display: flex; justify-content: space-between;">
+                  <span>កម្រិតជម្រៅ 3D (Depth):</span>
+                  <span id="val-3d-depth" class="slider-val" style="color: #ffd54f;">4px</span>
+                </label>
+                <div class="slider-container">
+                  <input type="range" id="slider-3d-depth" min="1" max="15" value="4" />
+                </div>
+              </div>
+
+              <!-- Direction Selector -->
+              <div class="form-group" style="margin-bottom: 12px;">
+                <label class="form-label">ទិសដៅជម្រៅ 3D (Direction):</label>
+                <select id="select-3d-direction" class="form-control" style="font-size: 12.5px; padding: 7px 10px;">
+                  <option value="135">↘ ចុះក្រោមទៅស្តាំ (Bottom-Right / Natural)</option>
+                  <option value="90">↓ ចុះក្រោមត្រង់ (Straight Down)</option>
+                  <option value="45">↙ ចុះក្រោមទៅឆ្វេង (Bottom-Left)</option>
+                  <option value="0">→ ទៅស្តាំត្រង់ (Right)</option>
+                  <option value="225">↗ ឡើងលើទៅស្តាំ (Top-Right)</option>
+                </select>
+              </div>
+
+              <!-- Shadow / Extrusion Color -->
+              <div class="form-group" style="margin-bottom: 12px;">
+                <label class="form-label">ពណ៌ជម្រៅ 3D / ស្រមោល (3D Shadow Color):</label>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                  <input type="color" id="color-3d-shadow" class="color-input-bubble" value="#0f172a" style="width: 38px; height: 38px;" />
+                  <span style="font-size: 11.5px; color: var(--text-muted);">ជ្រើសរើសពណ៌ស្រមោល ឬជម្រៅ 3D</span>
+                </div>
+              </div>
+
+              <!-- Apply to All Layers Button -->
+              <button type="button" class="btn btn-sm btn-outline" id="btn-apply-3d-all" style="width: 100%; justify-content: center; border-color: rgba(212,175,55,0.4); color: #ffd54f; font-size: 11.5px;">
+                <span>✨</span> អនុវត្ត 3D នេះលើអក្សរទាំងអស់ (Apply 3D to All)
+              </button>
+            </div>
+          </div>
+
+          <!-- 35 Pre-designed Text Color & Glow Styles -->
+          <div class="control-section">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div class="section-title" style="margin-bottom: 0;">
+                <span>✨</span> ម៉ូតពណ៌អក្សរស្អាតៗទាំង ៣៥
+              </div>
+              <span style="font-size: 11px; padding: 2px 8px; border-radius: 10px; background: rgba(212,175,55,0.2); color: #ffd54f; font-weight: 700;">35 ម៉ូត</span>
+            </div>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">
+              ចុចលើម៉ូតណាមួយដើម្បីដាក់ពណ៌ Gradient, Stroke និង Glow លើស្រទាប់អក្សរភ្លាមៗ ៖
+            </p>
+            <div class="text-styles-grid" id="text-styles-grid">
+              <!-- Dynamically populated via app.js -->
+            </div>
+          </div>
+
+          <!-- Colors & Gradient -->
+          <div class="control-section">
+            <div class="section-title">
+              <span>🎨</span> ពណ៌អក្សរ & Gradient ដោយដៃ (Custom Picker)
+            </div>
+            <div class="form-group">
+              <label class="form-check">
+                <input type="checkbox" id="toggle-gradient" checked />
+                <span>ប្រើពណ៌ Gradient ២ ជាន់ (Dual Gradient)</span>
+              </label>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px;">
+              <div class="form-group">
+                <label class="form-label">ពណ៌ទី ១</label>
+                <input type="color" id="color-fill-1" class="color-input-bubble" value="#0d47a1" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">ពណ៌ទី ២</label>
+                <input type="color" id="color-fill-2" class="color-input-bubble" value="#1976d2" />
+              </div>
+            </div>
+
+            <!-- Quick Swatches -->
+            <div class="swatches-bar">
+              <button class="swatch-btn" data-color="#0d47a1" style="background:#0d47a1;" title="Royal Blue"></button>
+              <button class="swatch-btn" data-color="#b8860b" style="background:#b8860b;" title="Khmer Gold"></button>
+              <button class="swatch-btn" data-color="#c2185b" style="background:#c2185b;" title="Ruby Red"></button>
+              <button class="swatch-btn" data-color="#2e7d32" style="background:#2e7d32;" title="Emerald Green"></button>
+              <button class="swatch-btn" data-color="#6a1b9a" style="background:#6a1b9a;" title="Purple"></button>
+              <button class="swatch-btn" data-color="#e65100" style="background:#e65100;" title="Amber Orange"></button>
+              <button class="swatch-btn" data-color="#00838f" style="background:#00838f;" title="Teal Cyan"></button>
+              <button class="swatch-btn" data-color="#4e342e" style="background:#4e342e;" title="Classic Brown"></button>
+            </div>
+          </div>
+
+          <!-- Text Stroke & Glow Effect -->
+          <div class="control-section">
+            <div class="section-title">
+              <span>✨</span> គែមអក្សរ & ស្រមោល (Stroke & Glow)
+            </div>
+            <div style="display: grid; grid-template-columns: 80px 1fr; gap: 12px;">
+              <div class="form-group">
+                <label class="form-label">ពណ៌គែម</label>
+                <input type="color" id="color-stroke" class="color-input-bubble" value="#ffffff" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">កម្រាស់គែម: <span id="stroke-width-val" class="slider-val">4px</span></label>
+                <div class="slider-container">
+                  <input type="range" id="slider-stroke-width" min="0" max="10" step="0.5" value="4" />
+                </div>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 80px 1fr; gap: 12px; margin-top: 10px;">
+              <div class="form-group">
+                <label class="form-label">ពណ៌ Glow</label>
+                <input type="color" id="color-glow" class="color-input-bubble" value="#ffeb3b" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">កម្រិត Glow Blur: <span id="glow-blur-val" class="slider-val">6px</span></label>
+                <div class="slider-container">
+                  <input type="range" id="slider-glow-blur" min="0" max="15" value="6" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Position -->
+          <div class="control-section">
+            <div class="section-title">
+              <span>📍</span> ទីតាំងអក្សរ (Position)
+            </div>
+            <div class="form-group">
+              <label class="form-label">ទីតាំងផ្ដេក (X)</label>
+              <div class="slider-container">
+                <input type="range" id="slider-pos-x" min="50" max="550" value="300" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ទីតាំងបញ្ឈរ (Y)</label>
+              <div class="slider-container">
+                <input type="range" id="slider-pos-y" min="60" max="800" value="200" />
+              </div>
+            </div>
+            <button class="btn btn-outline btn-sm" id="btn-align-h" style="width: 100%; margin-top: 8px;">
+              <span>↔️</span> តម្រឹមចំកណ្តាល (Center Horizontally)
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab 4: Frame Styles -->
+        <div class="tab-pane" id="tab-frames">
+          <!-- Upload Custom Diverse Frames from Computer -->
+          <div class="control-section" style="background: rgba(212, 175, 55, 0.05); border: 1px solid var(--border-gold);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div class="section-title" style="margin-bottom: 0;">
+                <span>📤</span> បញ្ចូលស៊ុមពីកុំព្យូទ័រ (PC Frames)
+              </div>
+              <span style="font-size: 11px; color: #ffd54f; font-weight: 700; background: rgba(212,175,55,0.15); padding: 2px 8px; border-radius: 10px;">ស៊ុមចម្រុះ</span>
+            </div>
+            <p style="font-size: 11.5px; color: var(--text-muted); margin-bottom: 12px;">
+              អាចជ្រើសរើសរូបភាពស៊ុមជាច្រើនព្រមគ្នាពីកុំព្យូទ័រ (PNG Transparent, JPG, SVG, WebP) ដើម្បីយកមកប្រើលើក្រប៖
+            </p>
+
+            <div class="upload-frame-dropzone" id="frame-dropzone" style="cursor: pointer;">
+              <input type="file" id="input-frame-upload" accept="image/png, image/jpeg, image/webp, image/svg+xml" multiple style="display: none;" />
+              <div class="dropzone-content" id="btn-browse-frame">
+                <span class="dropzone-icon">🖼️</span>
+                <span class="dropzone-text">ចុចទីនេះដើម្បីរើសរូបស៊ុមពីកុំព្យូទ័រ (រើសបានច្រើន)</span>
+                <span class="dropzone-hint">គាំទ្រ PNG Transparent, JPG, SVG, WebP</span>
+              </div>
+            </div>
+
+            <!-- Uploaded PC Custom Frames Gallery -->
+            <div id="pc-frames-gallery-container" style="margin-top: 14px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                <div style="font-size: 12px; font-weight: 700; color: #ffd54f; display: flex; align-items: center; gap: 6px;">
+                  <span>📁</span> ស៊ុមដែលបានបញ្ចូលពីកុំព្យូទ័រ (<span id="pc-frames-count">0</span>)
+                </div>
+                <button type="button" class="btn btn-sm btn-outline" id="btn-clear-all-pc-frames" style="font-size: 10.5px; padding: 2px 8px; color: #ef4444; border-color: rgba(239,68,68,0.3); display: none;">
+                  សម្អាតទាំងអស់
+                </button>
+              </div>
+
+              <div id="pc-frames-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-height: 220px; overflow-y: auto; padding: 2px;">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- Custom Frame Controls (Active Frame Adjustments) -->
+            <div id="custom-frame-controls"
+              style="display: none; margin-top: 14px; border-top: 1px dashed var(--border-color); padding: 12px; background: rgba(0,0,0,0.25); border-radius: var(--radius-sm);">
+              <div class="custom-frame-info-row" style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <div class="custom-frame-thumb-box" style="width: 48px; height: 64px; border-radius: 4px; overflow: hidden; border: 1px solid var(--accent-gold); background: #111; flex-shrink: 0;">
+                  <img id="custom-frame-thumb" src="" alt="Custom Frame" style="width: 100%; height: 100%; object-fit: contain;" />
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <div id="active-custom-frame-title" style="font-size: 12px; font-weight: 700; color: #ffd54f; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">ស៊ុមផ្ទាល់ខ្លួនកំពុងប្រើ</div>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">កំពុងបង្ហាញលើក្រប</div>
+                  <button class="btn btn-sm btn-outline" id="btn-remove-custom-frame"
+                    style="margin-top: 4px; padding: 3px 8px; font-size: 10.5px; color: #ef4444; border-color: rgba(239,68,68,0.4);">
+                    <span>🗑️</span> ដោះស៊ុមនេះចេញ
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 10px;">
+                <label class="form-label" style="font-size: 11.5px;">កម្រិតភាពច្បាស់ (Opacity): <span id="frame-opacity-val" class="slider-val">100%</span></label>
+                <div class="slider-container">
+                  <input type="range" id="slider-frame-opacity" min="10" max="100" value="100" />
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 10px;">
+                <label class="form-label" style="font-size: 11.5px;">គម្លាតគែមស៊ុម (Margin Inset): <span id="frame-inset-val" class="slider-val">0px</span></label>
+                <div class="slider-container">
+                  <input type="range" id="slider-frame-inset" min="0" max="40" value="0" />
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 10px;">
+                <label class="form-label" style="font-size: 11.5px;">ទម្រង់ទំហំស៊ុម (Fit Mode)</label>
+                <select id="select-frame-fit" class="form-control" style="font-size: 12px; padding: 6px 8px;">
+                  <option value="none">ពេញក្រប (Stretch to Fill)</option>
+                  <option value="xMidYMid meet">សមាមាត្រដើម (Fit Proportional)</option>
+                  <option value="xMidYMid slice">កាត់ពង្រីក (Crop & Fill)</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-check" style="font-size: 12px;">
+                  <input type="checkbox" id="toggle-inner-card" checked />
+                  <span>បង្ហាញផ្ទៃក្រដាសខាងក្នុង (Show Inner Card)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preset Frames Grid -->
+          <div class="control-section">
+            <div class="section-title">
+              <span>🏛️</span> ម៉ូតស៊ុមគំរូខ្មែរស្រាប់ៗ (Khmer Built-in Frames)
+            </div>
+            <div class="frame-grid" id="frame-list">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Center Stage: Live Canvas Preview Area -->
+    <section class="canvas-stage">
+      <div id="canvas-container">
+        <!-- SVG Canvas rendered by BookCoverCanvasEngine -->
+      </div>
+
+      <!-- Floating Controls -->
+      <div class="floating-tools">
+        <div class="floating-hint">
+          <span>👆</span> អាចចុច Drag & Drop រំកិលទីតាំងអក្សរលើក្របដោយសេរី
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Enhanced Print Studio Modal -->
+  <div class="modal-backdrop" id="print-modal">
+    <div class="modal-card" style="max-width: 980px;">
+      <div class="modal-header">
+        <div class="modal-title">🖨️ ប្លង់បោះពុម្ពលើក្រដាស A4 (Khmer A4 Print Studio)</div>
+        <button class="modal-close" id="close-print-modal">&times;</button>
+      </div>
+      <div class="modal-body" style="background: #0b0f19;">
+
+        <!-- Print Toolbar Controls -->
+        <div class="print-toolbar-panel">
+          <div class="print-controls-grid">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">📑 ទម្រង់បោះពុម្ព (Print Mode)</label>
+              <select id="print-mode-select" class="form-control"
+                style="padding: 7px 10px; font-size: 12.5px; font-weight: 600; color: #ffd54f;">
+                <option value="all-12" selected>🌟 បោះពុម្ពទាំង ១២ មុខវិជ្ជា (៦ សន្លឹក A4 - ២ ក្របក្នុង ១ សន្លឹក)</option>
+                <option value="all-10">🌟 បោះពុម្ព ១០ មុខវិជ្ជាបឋម (៥ សន្លឹក A4 - ២ ក្របក្នុង ១ សន្លឹក)</option>
+                <option value="2-diff">🔄 រើស ២ មុខវិជ្ជាជាក់លាក់ (១ សន្លឹក A4)</option>
+                <option value="2-same">📑 ២ ក្របដូចគ្នា (១ សន្លឹក A4)</option>
+                <option value="1-full">📄 ១ ក្របទំហំពេញ A4</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="group-subject-1" style="display: none; margin-bottom: 0;">
+              <label class="form-label">ក្របទី ១ (ខាងឆ្វេង)</label>
+              <select id="print-sub1-select" class="form-control" style="padding: 7px 10px;"></select>
+            </div>
+
+            <div class="form-group" id="group-subject-2" style="display: none; margin-bottom: 0;">
+              <label class="form-label">ក្របទី ២ (ខាងស្តាំ)</label>
+              <select id="print-sub2-select" class="form-control" style="padding: 7px 10px;"></select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">គម្លាតគែម (Margin)</label>
+              <select id="print-margin-select" class="form-control" style="padding: 7px 10px;">
+                <option value="margin-standard">ស្ដង់ដារ (Standard 8mm)</option>
+                <option value="margin-tight">ស្តើង (Tight 4mm)</option>
+                <option value="margin-none">គ្មានគែម (Borderless 0mm)</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0; display: flex; align-items: flex-end; padding-bottom: 6px;">
+              <label class="form-check" style="font-size: 12px;">
+                <input type="checkbox" id="toggle-cut-guides" checked />
+                <span>✂️ បង្ហាញបន្ទាត់កាត់</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Print Guidance Banner -->
+        <div class="print-guide-banner">
+          <div class="guide-banner-item">
+            <span>📄</span>
+            <span><strong>ទំហំ ៖</strong> A4</span>
+          </div>
+          <div class="guide-banner-item">
+            <span>🔄</span>
+            <span><strong>ទិសដៅ ៖</strong> Landscape (ផ្តេក)</span>
+          </div>
+          <div class="guide-banner-item">
+            <span>📐</span>
+            <span><strong>Margins ៖</strong> None ឬ Default</span>
+          </div>
+          <div class="guide-banner-item">
+            <span>🎨</span>
+            <span><strong>Background graphics ៖</strong> បើក (Checked)</span>
+          </div>
+        </div>
+
+        <!-- A4 Sheet Live Preview Stage -->
+        <div class="print-preview-stage">
+          <div id="print-preview-container"
+            style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 28px;">
+            <!-- Rendered by app.js -->
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer" style="justify-content: space-between;">
+        <div style="font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+          <span>💡</span> <span id="print-sheet-info-text">បោះពុម្ពគ្រប់មុខវិជ្ជាលើក្រដាស A4 ដោយស្វ័យប្រវត្តិ</span>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-outline" id="btn-download-a4-png" title="ទាញយកសន្លឹក A4 ទាំងអស់ជារូបភាព HD ច្បាស់ 300 DPI">
+            <span>📥</span> ទាញយក A4 (HD Image)
+          </button>
+          <button class="btn btn-primary" id="btn-execute-print" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-color: #10b981;">
+            <span>🖨️</span> បោះពុម្ពឥឡូវនេះ (Print Now)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Batch Generation Modal -->
+  <div class="modal-backdrop" id="batch-modal">
+    <div class="modal-card" style="max-width: 960px;">
+      <div class="modal-header">
+        <div class="modal-title">📦 បង្កើតក្របសៀវភៅគ្រប់មុខវិជ្ជា (Batch Generator)</div>
+        <button class="modal-close" id="close-batch-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 13px; color: var(--text-light); margin-bottom: 16px;">
+          ប្រព័ន្ធបានបង្កើតក្របសៀវភៅសម្រាប់គ្រប់មុខវិជ្ជា ដោយរក្សាឈ្មោះសិស្ស សាលារៀន និងថ្នាក់ដដែលដោយស្វ័យប្រវត្តិ៖
+        </p>
+        <div class="batch-grid-view" id="batch-grid">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="document.getElementById('batch-modal').classList.remove('show')">បិទ</button>
+        <button class="btn btn-primary" id="btn-execute-batch-download">📥 ទាញយកទាំងអស់ (Download All)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add / Edit Subject Modal -->
+  <div class="modal-backdrop" id="subject-modal">
+    <div class="modal-card" style="max-width: 580px;">
+      <div class="modal-header">
+        <div class="modal-title" id="subject-modal-title">➕ បន្ថែមមុខវិជ្ជាថ្មី</div>
+        <button class="modal-close" id="close-subject-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-subject" onsubmit="return false;">
+          <input type="hidden" id="modal-subject-id" value="" />
+
+          <!-- Quick Suggestions Chips -->
+          <div class="form-group">
+            <label class="form-label">💡 មុខវិជ្ជាពេញនិយម (ចុចរើសភ្លាមៗ) ៖</label>
+            <div class="quick-subject-chips">
+              <button type="button" class="chip-btn" data-name="ព័ត៌មានវិទ្យា (ICT)" data-sub="ICT / Computer" data-icon="💻" data-color="#0284c7">💻 ព័ត៌មានវិទ្យា</button>
+              <button type="button" class="chip-btn" data-name="រូបវិទ្យា" data-sub="Physics" data-icon="⚡" data-color="#7c3aed">⚡ រូបវិទ្យា</button>
+              <button type="button" class="chip-btn" data-name="គីមីវិទ្យា" data-sub="Chemistry" data-icon="🧪" data-color="#059669">🧪 គីមីវិទ្យា</button>
+              <button type="button" class="chip-btn" data-name="ជីវវិទ្យា" data-sub="Biology" data-icon="🌿" data-color="#16a34a">🌿 ជីវវិទ្យា</button>
+              <button type="button" class="chip-btn" data-name="ភូមិវិទ្យា" data-sub="Geography" data-icon="🗺️" data-color="#ea580c">🗺️ ភូមិវិទ្យា</button>
+              <button type="button" class="chip-btn" data-name="ប្រវត្តិវិទ្យា" data-sub="History" data-icon="🏛️" data-color="#9333ea">🏛️ ប្រវត្តិវិទ្យា</button>
+              <button type="button" class="chip-btn" data-name="អប់រំកាយ & កីឡា" data-sub="Physical Education" data-icon="🏃‍♂️" data-color="#dc2626">🏃‍♂️ អប់រំកាយ</button>
+              <button type="button" class="chip-btn" data-name="តន្ត្រី & ចម្រៀង" data-sub="Music" data-icon="🎶" data-color="#db2777">🎶 តន្ត្រី</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="modal-subject-name">ឈ្មោះមុខវិជ្ជា (Subject Name) *</label>
+            <input type="text" id="modal-subject-name" class="form-control" placeholder="ឧទាហរណ៍៖ ព័ត៌មានវិទ្យា (ICT)" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="modal-subject-sub">ឈ្មោះជាភាសាអង់គ្លេស / អក្សររង (English Subtitle)</label>
+            <input type="text" id="modal-subject-sub" class="form-control" placeholder="ឧទាហរណ៍៖ ICT / Computer Science" />
+          </div>
+
+          <div style="display: grid; grid-template-columns: 100px 1fr; gap: 14px;">
+            <div class="form-group">
+              <label class="form-label" for="modal-subject-icon">Icon / Emoji</label>
+              <input type="text" id="modal-subject-icon" class="form-control" style="font-size: 20px; text-align: center;" value="💻" maxlength="4" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">ម៉ូតស៊ុម (Frame Style)</label>
+              <select id="modal-subject-frame" class="form-control">
+                <option value="royal-kbach">ក្បាច់ភ្ញីទេសរាជវាំងមាស</option>
+                <option value="angkor-wat">ក្បាច់អង្គរវត្ត & ផ្កាឈូក</option>
+                <option value="romdoul-khmer">ផ្ការំដួលជាតិខ្មែរ</option>
+                <option value="notebook-grid">ក្រឡាសៀវភៅសិស្សកម្ពុជា</option>
+                <option value="cambodian-flag">ស៊ុមទង់ជាតិ & បូកិត្តិយស</option>
+                <option value="sample-floral-stripes">គំរូផ្កាឆ្នូតប៉ាស្ទែល</option>
+                <option value="sweet-floral">ផ្កាប៉ាស្ទែលស្រស់ស្អាត</option>
+                <option value="cosmic-galaxy">កាឡាក់ស៊ីអវកាស</option>
+                <option value="rainbow-fun">ឥន្ទធនូរីករាយ</option>
+                <option value="honor-badge">បូកិត្តិយស & ស្លឹកជ័យ</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="form-group">
+              <label class="form-label">ពណ៌ចម្បង (Theme Color)</label>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="color" id="modal-subject-color" class="color-input-bubble" value="#0284c7" />
+                <span id="modal-color-hex" style="font-size: 12px; color: var(--text-muted); font-family: monospace;">#0284c7</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ពណ៌អក្សរ (Text Color)</label>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="color" id="modal-subject-text-color" class="color-input-bubble" value="#0369a1" />
+                <span id="modal-text-color-hex" style="font-size: 12px; color: var(--text-muted); font-family: monospace;">#0369a1</span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer" style="justify-content: space-between;">
+        <button class="btn btn-outline" id="btn-reset-default-subjects" type="button" title="កំណត់ត្រឡប់មកមុខវិជ្ជាដើមវិញ">
+          <span>🔄</span> មុខវិជ្ជាដើម
+        </button>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-outline" id="btn-cancel-subject-modal" type="button">បោះបង់</button>
+          <button class="btn btn-primary" id="btn-save-subject" type="button">💾 រក្សាទុក</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Sheets Cloud Sync & Import Modal -->
+  <div class="modal-backdrop" id="sheets-modal">
+    <div class="modal-card" style="max-width: 820px;">
+      <div class="modal-header">
+        <div class="modal-title" style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 20px;">📊</span> សមកាលកម្ម Google Sheets & នាំចូលបញ្ជីសិស្ស
+        </div>
+        <button class="modal-close" id="close-sheets-modal">&times;</button>
+      </div>
+
+      <!-- Sheets Sub-Navigation Tabs -->
+      <div class="sheets-nav-tabs">
+        <button class="sheets-tab-btn active" data-sheet-tab="import-tab">📋 នាំចូលបញ្ជីសិស្ស (Import Class)</button>
+        <button class="sheets-tab-btn" data-sheet-tab="sync-tab">☁️ សមកាលកម្ម Cloud (Apps Script)</button>
+        <button class="sheets-tab-btn" data-sheet-tab="guide-tab">🛠️ របៀបដំឡើង & កូដ Script</button>
+        <button class="sheets-tab-btn" data-sheet-tab="backup-tab">💾 Backup & Restore (JSON)</button>
+      </div>
+
+      <div class="modal-body" style="padding-top: 16px;">
+        <!-- Tab 1: Batch Student Import -->
+        <div class="sheets-tab-pane" id="import-tab">
+          <div class="form-group">
+            <label class="form-label">បិទភ្ជាប់ (Paste) ទិន្នន័យបញ្ជីឈ្មោះសិស្សពី Excel ឬ CSV ៖</label>
+            <textarea id="textarea-csv-import" class="form-control" rows="4" placeholder="ឈ្មោះសាលា, ថ្នាក់ទី, ឈ្មោះសិស្ស, ឆ្នាំសិក្សា, គ្រូបន្ទុកថ្នាក់&#10;សាលាបឋមសិក្សាកោះថ្កូវ, ថ្នាក់ទី ៤(ក), រស់ សុវណ្ណរចនា, ឆ្នាំសិក្សា ២០២៥ ~ ២០២៦, អ្នកគ្រូ គឹម សុផល&#10;សាលាបឋមសិក្សាកោះថ្កូវ, ថ្នាក់ទី ៤(ក), ចាន់ វុទ្ធី, ឆ្នាំសិក្សា ២០២៥ ~ ២០២៦, អ្នកគ្រូ គឹម សុផល"></textarea>
+            <button class="btn btn-sm btn-primary" id="btn-parse-csv-textarea" style="margin-top: 8px;">
+              <span>⚡</span> ដំណើរការបញ្ជីសិស្ស (Parse List)
+            </button>
+          </div>
+
+          <div id="import-preview-box" style="margin-top: 14px; display: none;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="font-size: 12.5px; font-weight: 700; color: #10b981;">
+                ✅ រកឃើញសិស្សចំនួន <span id="imported-count">0</span> នាក់
+              </div>
+              <button class="btn btn-sm btn-primary" id="btn-apply-first-student">
+                <span>🎯</span> ដាក់សិស្សទី ១ លើក្រប
+              </button>
+            </div>
+            <div class="imported-table-container">
+              <table class="imported-students-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>ឈ្មោះសិស្ស</th>
+                    <th>ថ្នាក់ទី</th>
+                    <th>ឈ្មោះសាលា</th>
+                    <th>ឆ្នាំសិក្សា</th>
+                    <th>សកម្មភាព</th>
+                  </tr>
+                </thead>
+                <tbody id="imported-students-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Cloud Sync via Apps Script -->
+        <div class="sheets-tab-pane" id="sync-tab" style="display: none;">
+          <div class="cloud-status-banner">
+            <div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">រក្សាទុកទិន្នន័យលើ Google Sheets</div>
+              <div style="font-size: 11.5px; color: var(--text-muted);">ភ្ជាប់ Web App URL ដើម្បីបើកប្រើលើឧបករណ៍ដទៃទៀត</div>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top: 14px;">
+            <label class="form-label" for="input-sheets-webapp-url">Google Apps Script Web App URL ៖</label>
+            <input type="url" id="input-sheets-webapp-url" class="form-control" placeholder="https://script.google.com/macros/s/AKfycb.../exec" />
+          </div>
+        </div>
+
+        <!-- Tab 3: Setup Guide & Apps Script Code -->
+        <div class="sheets-tab-pane" id="guide-tab" style="display: none;">
+          <div class="guide-steps-container">
+            <div class="guide-step-card">
+              <div class="step-num">១</div>
+              <div class="step-text">បង្កើត Google Sheet ថ្មីលើ Google Drive របស់អ្នក</div>
+            </div>
+            <div class="guide-step-card">
+              <div class="step-num">២</div>
+              <div class="step-text">ចូល <strong>Extensions</strong> > <strong>Apps Script</strong></div>
+            </div>
+            <div class="guide-step-card">
+              <div class="step-num">៣</div>
+              <div class="step-text">ចម្លងកូដខាងក្រោមនេះយកទៅ Paste រួចចុច Deploy > New Deployment > Web app (Who has access: Anyone)</div>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; margin: 14px 0 6px;">
+            <span style="font-size: 12px; font-weight: 700; color: #ffd54f;">📜 កូដ Apps Script ៖</span>
+            <button class="btn btn-sm btn-outline" id="btn-copy-script-code">📋 ចម្លងកូដ</button>
+          </div>
+          <pre class="script-code-pre"><code id="script-code-display"></code></pre>
+        </div>
+
+        <!-- Tab 4: JSON Backup & Restore -->
+        <div class="sheets-tab-pane" id="backup-tab" style="display: none;">
+          <div style="padding: 24px; background: rgba(255,255,255,0.03); border-radius: var(--radius-md); border: 1px dashed var(--border-gold); text-align: center;">
+            <div style="font-size: 36px; margin-bottom: 8px;">💾</div>
+            <h4 style="color: #fff; margin: 0 0 6px;">នាំចេញ ឬ នាំចូលឯកសារ Backup (JSON)</h4>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 0 0 18px;">
+              អាចទាញយកឯកសារ Backup ផ្ញើតាម Telegram ឬ Messenger ទៅកាន់កុំព្យូទ័រផ្សេងទៀតដើម្បីបើកប្រើភ្លាមៗ!
+            </p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+              <button class="btn btn-primary" id="btn-export-backup-json" type="button">
+                <span>📤</span> ទាញយក Backup (JSON)
+              </button>
+              <button class="btn btn-outline" id="btn-trigger-import-json" type="button">
+                <span>📥</span> បញ្ចូល Backup (JSON)
+              </button>
+              <input type="file" id="input-import-json-file" accept=".json" style="display: none;" />
+            </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="document.getElementById('sheets-modal').classList.remove('show')">បិទ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template Database & Multi-Computer Sharing Modal -->
+  <div class="modal-backdrop" id="database-modal">
+    <div class="modal-card" style="max-width: 820px;">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span style="font-size: 20px;">💾</span> មូលដ្ឋានទិន្នន័យ Template (បើកលើកុំព្យូទ័រណាក៏ចេញដូចគ្នា)
+        </div>
+        <button class="modal-close" id="close-database-modal">&times;</button>
+      </div>
+
+      <div class="modal-body" style="padding: 20px;">
+        <!-- Section 1: Save Current Template -->
+        <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: var(--radius-md); padding: 16px; margin-bottom: 20px;">
+          <h4 style="color: #38bdf8; font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+            <span>➕</span> រក្សាទុក Template បច្ចុប្បន្នចូល Database
+          </h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+            ពេលរក្សាទុកក្នុង Database ហើយ លោកអ្នកអាចបើកមើលលើកុំព្យូទ័រផ្សេងទៀតក្នុងបណ្ដាញ ឬតាមរយះតំណភ្ជាប់ចែករំលែកបាន ១០០%។
+          </p>
+          <div style="display: flex; gap: 10px;">
+            <input type="text" id="input-save-template-name" class="form-control" placeholder="បញ្ចូលឈ្មោះ Template (ឧ. គំរូក្របភាសាខ្មែរ ថ្នាក់ទី៤ បឋមសិក្សាកោះថ្កូវ)" style="font-size: 13px;" />
+            <button class="btn btn-primary" id="btn-save-template-db" style="white-space: nowrap; padding: 8px 18px;">
+              <span>💾</span> រក្សាទុក (Save)
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 2: Shareable Link across computers -->
+        <div style="background: rgba(212, 175, 55, 0.08); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 16px; margin-bottom: 20px;">
+          <h4 style="color: #ffd54f; font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+            <span>🔗</span> តំណភ្ជាប់ចែករំលែកឆ្លងកុំព្យូទ័រ (Shareable Link)
+          </h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
+            ចម្លង Link នេះផ្ញើតាម Telegram, Messenger ឬ Email ទៅកាន់កុំព្យូទ័រ ឬទូរស័ព្ទណាក៏ដោយ — ពេលបើក Link នេះ នឹងចេញក្របសៀវភៅ និងទិន្នន័យដូចគ្នាបេះបិទ!
+          </p>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="input-shareable-link-url" class="form-control" readonly style="font-size: 11.5px; font-family: monospace; background: #0f172a; color: #38bdf8;" />
+            <button class="btn btn-accent btn-sm" id="btn-copy-share-url" style="white-space: nowrap;">
+              <span>📋</span> ចម្លង Link
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 3: List of Saved Templates -->
+        <div style="margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+            <h4 style="color: #fff; font-size: 14px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;">
+              <span>📚</span> បញ្ជី Template ក្នុង Database (<span id="db-template-count">0</span>)
+            </h4>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button class="btn btn-sm btn-outline" id="btn-refresh-db-templates" title="ទាញយកបញ្ជីឡើងវិញ">
+                <span>🔄</span> ទាញបញ្ជីថ្មី
+              </button>
+              <button class="btn btn-sm btn-outline" id="btn-export-template-file" title="ទាញយកឯកសារ JSON">
+                <span>💾</span> ទាញយក File .json
+              </button>
+              <button class="btn btn-sm btn-outline" id="btn-import-template-file" title="បើកពីឯកសារ JSON">
+                <span>📂</span> បើក File .json
+              </button>
+              <input type="file" id="input-db-json-file" accept=".json" style="display: none;" />
+            </div>
+          </div>
+
+          <div id="db-templates-list-container" style="max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 4px;">
+            <div style="text-align: center; padding: 30px; color: var(--text-muted); font-size: 13px;">
+              កំពុងទាញយកទិន្នន័យ Template...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="close-database-modal-footer">បិទ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visual Font Studio & PC Local Font Picker Modal -->
+  <div class="modal-overlay" id="font-picker-modal" style="display: none;">
+    <div class="modal-card font-picker-modal-card">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 26px;">🔤</span>
+          <div>
+            <h2 class="modal-title" style="font-size: 17px; margin-bottom: 2px;">ជ្រើសរើស Font ពីកុំព្យូទ័រ & Font ខ្មែរស្អាតៗ</h2>
+            <div style="font-size: 11.5px; color: var(--text-muted);">
+              រើស Font Windows ក្នុង PC, បញ្ចូលឯកសារ Font (.ttf/.otf), ឬស្កេន Font ទាំងអស់ក្នុងកុំព្យូទ័រ
+            </div>
+          </div>
+        </div>
+        <button class="modal-close" id="close-font-picker-modal" type="button">&times;</button>
+      </div>
+
+      <div class="modal-body" style="padding: 16px; overflow-y: auto; max-height: calc(85vh - 120px);">
+        <!-- Top Toolbar -->
+        <div class="font-picker-toolbar">
+          <div class="font-search-box">
+            <span class="font-search-icon">🔍</span>
+            <input type="text" id="font-picker-search" placeholder="ស្វែងរកឈ្មោះ Font (ឧ. Muol, Battambang, Bokor, Koulen)..." />
+          </div>
+
+          <div class="font-toolbar-btns">
+            <button type="button" class="btn btn-sm btn-outline" id="btn-modal-scan-pc" title="ស្កេនទាញយក Font ទាំងអស់ដែលបានដំឡើងលើ Windows/កុំព្យូទ័រ">
+              <span>🔍</span> ស្កេន PC Fonts
+            </button>
+            <button type="button" class="btn btn-sm btn-primary" id="btn-modal-upload-font" title="ជ្រើសរើសឯកសារ Font (.ttf, .otf, .woff, .woff2) ពីកុំព្យូទ័រ">
+              <span>📁</span> បញ្ចូល File Font (.ttf)
+            </button>
+            <input type="file" id="modal-font-upload-input" accept=".ttf,.otf,.woff,.woff2" multiple style="display: none;" />
+          </div>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="font-category-tabs" id="font-category-tabs">
+          <button type="button" class="font-tab-pill active" data-cat="all">⚡ ទាំងអស់ (<span id="count-all-fonts">0</span>)</button>
+          <button type="button" class="font-tab-pill" data-cat="windows">💻 ក្នុង Windows/PC (<span id="count-pc-fonts">0</span>)</button>
+          <button type="button" class="font-tab-pill" data-cat="custom">📁 File ផ្ទាល់ខ្លួន (<span id="count-custom-fonts">0</span>)</button>
+          <button type="button" class="font-tab-pill" data-cat="scanned">🖥️ បានស្កេនពី PC (<span id="count-scanned-fonts">0</span>)</button>
+          <button type="button" class="font-tab-pill" data-cat="google">🌐 Google Fonts (<span id="count-google-fonts">0</span>)</button>
+        </div>
+
+        <!-- Live Preview Text Input -->
+        <div class="font-preview-customizer">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <label for="font-sample-input" style="font-size: 11.5px; font-weight: 700; color: #ffd54f;">✍️ អក្សរគំរូសាកល្បងមើល (Live Preview Text):</label>
+            <div style="font-size: 11px; color: var(--text-muted);">
+              ស្រទាប់សកម្ម ៖ <strong id="font-picker-active-layer-name" style="color: #38bdf8;">ឈ្មោះសាលារៀន</strong>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="font-sample-input" class="form-control" style="font-size: 13px; font-weight: 600;" value="សាលាបឋមសិក្សាកោះថ្កូវ • ភាសាខ្មែរ" />
+            <button type="button" class="btn btn-sm btn-outline" id="btn-reset-preview-text" style="font-size: 11px; white-space: nowrap; padding: 6px 12px;">
+              អត្ថបទដើម
+            </button>
+          </div>
+        </div>
+
+        <!-- Font Cards Grid -->
+        <div class="font-cards-grid" id="font-cards-grid">
+          <!-- Populated dynamically via app.js -->
+        </div>
+
+        <!-- Empty state message if search has no results -->
+        <div id="font-picker-empty" style="display: none; text-align: center; padding: 40px 20px; color: var(--text-muted);">
+          <div style="font-size: 32px; margin-bottom: 8px;">🔍</div>
+          <div style="font-size: 14px; font-weight: 600;">រកមិនឃើញ Font ដែលត្រូវនឹងពាក្យស្វែងរកទេ</div>
+          <div style="font-size: 12px; margin-top: 4px;">អ្នកអាចចុច "បញ្ចូល File Font" ដើម្បីដំឡើង Font ផ្ទាល់ខ្លួនពីកុំព្យូទ័របាន</div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+        <div style="font-size: 11.5px; color: var(--text-muted);">
+          💡 ជំនួយ ៖ ចុចលើ Font ណាមួយដើម្បីដាក់ភ្លាមៗ ឬចុច "✨ ដាក់លើទាំងអស់" ដើម្បីអនុវត្តលើក្របទាំងមូល
+        </div>
+        <button class="btn btn-outline" id="close-font-picker-footer" type="button">បិទ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dedicated Print Root for Pure Vector Printing -->
+  <div id="print-root"></div>
+
+  <!-- JavaScript Scripts -->
+  <script src="js/fonts.js"></script>
+  <script src="js/color-styles.js"></script>
+  <script src="js/presets.js"></script>
+  <script src="js/curved-text.js"></script>
+  <script src="js/canvas-engine.js"></script>
+  <script src="js/google-sheets.js"></script>
+  <script src="js/template-manager.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
